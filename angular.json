@@ -1,6 +1,33 @@
 {
   "version": 1,
   "projects": {
+    "test-lib": {
+      "projectType": "library",
+      "root": "libs/test-lib",
+      "sourceRoot": "libs/test-lib/src",
+      "prefix": "literalpie",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/test-lib/src/**/*.ts",
+              "libs/test-lib/src/**/*.html"
+            ]
+          },
+          "outputs": ["{options.outputFile}"]
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/test-lib"],
+          "options": {
+            "jestConfig": "libs/test-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "tsconfig-path": {
       "projectType": "application",
       "root": "apps/tsconfig-path",
@@ -77,7 +104,8 @@
               "apps/tsconfig-path/src/**/*.ts",
               "apps/tsconfig-path/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -118,7 +146,8 @@
             }
           }
         }
-      }
+      },
+      "tags": []
     },
     "tsconfig-path-e2e": {
       "root": "apps/tsconfig-path-e2e",
@@ -142,52 +171,12 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/tsconfig-path-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
-    },
-    "test-lib": {
-      "projectType": "library",
-      "root": "libs/test-lib",
-      "sourceRoot": "libs/test-lib/src",
-      "prefix": "literalpie",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/test-lib/src/**/*.ts",
-              "libs/test-lib/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/test-lib"],
-          "options": {
-            "jestConfig": "libs/test-lib/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
+      },
+      "tags": [],
+      "implicitDependencies": ["tsconfig-path"]
     }
   }
 }

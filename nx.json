@@ -1,13 +1,18 @@
 {
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": { "defaultBase": "master" },
+  "affected": {
+    "defaultBase": "master"
+  },
   "npmScope": "literalpie",
   "tasksRunnerOptions": {
     "default": {
@@ -19,24 +24,25 @@
           "test",
           "e2e",
           "build-storybook"
-        ]
+        ],
+        "parallel": 1
       }
     }
   },
-  "projects": {
-    "tsconfig-path": { "tags": [] },
-    "tsconfig-path-e2e": {
-      "tags": [],
-      "implicitDependencies": ["tsconfig-path"]
-    },
-    "test-lib": { "tags": [] }
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
   },
-  "cli": { "defaultCollection": "@nrwl/angular" },
   "generators": {
     "@nrwl/angular": {
-      "application": { "linter": "eslint" },
-      "library": { "linter": "eslint" },
-      "storybook-configuration": { "linter": "eslint" }
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
     },
     "@nrwl/angular:application": {
       "style": "scss",
@@ -49,7 +55,17 @@
       "linter": "eslint",
       "unitTestRunner": "jest"
     },
-    "@nrwl/angular:component": { "style": "scss" }
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
   },
-  "defaultProject": "tsconfig-path"
+  "defaultProject": "tsconfig-path",
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  }
 }
