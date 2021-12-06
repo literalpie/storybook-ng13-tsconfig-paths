@@ -1,0 +1,8 @@
+@use '@angular/cdk' as cdk;
+
+.test {
+  @include cdk.high-contrast() {
+    margin-left: -8px;
+  }
+}
+

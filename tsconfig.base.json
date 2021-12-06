@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@literalpie/my-lib": ["libs/my-lib/src/index.ts"],
       "@literalpie/test-lib": ["libs/test-lib/src/index.ts"]
     }
   },
