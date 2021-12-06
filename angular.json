@@ -23,6 +23,22 @@
           },
           "defaultConfiguration": "production"
         },
+        "ng-build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "outputs": ["dist/libs/my-lib"],
+          "options": {
+            "project": "libs/my-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/my-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/my-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/my-lib"],

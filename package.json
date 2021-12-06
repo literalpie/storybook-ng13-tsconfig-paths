@@ -25,7 +25,10 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "packagr": "ng-packagr -p ./libs/my-lib",
+    "ng-build": "nx run my-lib:ng-build",
+    "nx-build": "nx build my-lib"
   },
   "private": true,
   "dependencies": {
